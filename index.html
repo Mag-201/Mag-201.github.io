@@ -318,7 +318,7 @@
     }
 
     .project-preview {
-      height: 140px;
+      height: 160px;
       border-radius: 18px;
       margin-bottom: 16px;
       background:
@@ -331,6 +331,131 @@
       color: #eef3ff;
       text-align: center;
       padding: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    .project-preview.placeholder::after {
+      content: "Add project screenshot later";
+      position: absolute;
+      inset: auto 14px 14px 14px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(11,16,32,0.62);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #f5f7ff;
+    }
+
+    .featured {
+      padding-top: 10px;
+    }
+
+    .featured-wrap {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .featured-card,
+    .github-card {
+      background: var(--card-strong);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .featured-card {
+      padding: 26px;
+    }
+
+    .featured-label {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--accent-3);
+      font-size: 0.86rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .featured-card h3 {
+      margin: 0 0 10px;
+      font-size: clamp(1.45rem, 2.8vw, 2rem);
+    }
+
+    .featured-card p {
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+
+    .featured-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .featured-stat {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .featured-stat strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .featured-shot {
+      min-height: 100%;
+      padding: 18px;
+      display: grid;
+      place-items: center;
+    }
+
+    .featured-shot-box {
+      width: 100%;
+      min-height: 290px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        radial-gradient(circle at top left, rgba(138,180,255,0.18), transparent 28%),
+        linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+      color: #eef3ff;
+      font-weight: 700;
+    }
+
+    .github-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .github-card {
+      padding: 18px;
+    }
+
+    .github-card img {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .project-meta {
@@ -398,7 +523,10 @@
       .grid-2,
       .contact-box,
       .project-grid,
-      .stats {
+      .stats,
+      .featured-wrap,
+      .github-grid,
+      .featured-stats {
         grid-template-columns: 1fr;
       }
 
@@ -406,6 +534,150 @@
       .section-head {
         align-items: start;
       }
+    }
+  
+    /* Light warm theme */
+    body.light {
+      --bg: #f6f1e6;
+      --bg-soft: #efe4cf;
+      --card: rgba(255, 251, 244, 0.95);
+      --card-strong: rgba(255, 249, 239, 0.98);
+      --line: rgba(165, 126, 52, 0.22);
+      --text: #3f3426;
+      --muted: #6f6252;
+      --accent: #b8862f;
+      --accent-2: #c79a42;
+      --accent-3: #d8b15f;
+      background:
+        radial-gradient(circle at top left, rgba(184,134,47,0.14), transparent 35%),
+        radial-gradient(circle at top right, rgba(216,177,95,0.12), transparent 30%),
+        linear-gradient(180deg, #f6f1e6 0%, #efe4cf 100%);
+      color: var(--text);
+    }
+
+    body.light .nav {
+      background: rgba(246, 241, 230, 0.88);
+      border-bottom: 1px solid rgba(165, 126, 52, 0.18);
+    }
+
+    body.light .nav-links {
+      color: #6f6252;
+    }
+
+    body.light .nav-links a:hover {
+      color: #3f3426;
+    }
+
+    body.light .brand {
+      color: #6a4a1b;
+    }
+
+    body.light .brand span {
+      color: #b8862f;
+    }
+
+    body.light .gradient {
+      background: linear-gradient(90deg, #8a6325 0%, #b8862f 45%, #c79a42 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    body.light .hero-card,
+    body.light .card,
+    body.light .project-card,
+    body.light .featured-card,
+    body.light .github-card,
+    body.light .timeline-item,
+    body.light .featured-stat,
+    body.light .stat,
+    body.light .quick-item {
+      background: rgba(255, 251, 244, 0.96);
+      border: 1px solid rgba(165, 126, 52, 0.18);
+      box-shadow: 0 14px 30px rgba(92, 72, 33, 0.08);
+    }
+
+    body.light .eyebrow,
+    body.light .tag,
+    body.light .featured-label {
+      background: rgba(191, 148, 65, 0.1);
+      border: 1px solid rgba(165, 126, 52, 0.2);
+      color: #7a5a24;
+    }
+
+    body.light .tag {
+      color: #6a5326;
+    }
+
+    body.light .btn.secondary {
+      background: rgba(191, 148, 65, 0.08);
+      color: #4b3d2b;
+      border: 1px solid rgba(165, 126, 52, 0.2);
+    }
+
+    body.light .btn.primary {
+      background: linear-gradient(90deg, #c79a42, #d8b15f);
+      color: #2f2416;
+    }
+
+    body.light .project-links a {
+      color: #9a6f1f;
+    }
+
+    body.light .project-preview {
+      background:
+        linear-gradient(135deg, rgba(199,154,66,0.16), rgba(216,177,95,0.1)),
+        rgba(255, 249, 239, 0.95);
+      border: 1px solid rgba(165, 126, 52, 0.18);
+      color: #5a4a31;
+    }
+
+    body.light .project-preview.placeholder::after {
+      background: rgba(255, 248, 236, 0.92);
+      border: 1px solid rgba(165, 126, 52, 0.2);
+      color: #7a5a24;
+    }
+
+    body.light .featured-shot-box {
+      background:
+        radial-gradient(circle at top left, rgba(199,154,66,0.12), transparent 28%),
+        linear-gradient(135deg, rgba(255, 249, 239, 0.96), rgba(247, 238, 220, 0.96));
+      border: 1px solid rgba(165, 126, 52, 0.18);
+      color: #5a4a31;
+    }
+
+    body.light .mini,
+    body.light .section-head p,
+    body.light .card p,
+    body.light .card li,
+    body.light .project-card p,
+    body.light .project-card li,
+    body.light .project-meta,
+    body.light .featured-card p,
+    body.light .footer,
+    body.light .quick-item,
+    body.light .hero p {
+      color: #6f6252;
+    }
+
+    body.light .timeline-item .time {
+      color: #a27120;
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.08);
+      padding: 8px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    body.light .theme-toggle {
+      background: rgba(191, 148, 65, 0.1);
+      color: #5a4520;
+      border: 1px solid rgba(165, 126, 52, 0.22);
     }
   </style>
 </head>
@@ -419,6 +691,7 @@
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
+        <button class="theme-toggle" onclick="toggleTheme()">☀︎ Day</button>
       </div>
     </div>
   </nav>
@@ -480,6 +753,48 @@
   </header>
 
   <main>
+    <section class="featured" id="featured-project">
+      <div class="container">
+        <div class="featured-wrap">
+          <article class="featured-card">
+            <div class="featured-label">Featured Project</div>
+            <h3>AI Agent for Stock Analysis & Prediction</h3>
+            <p>This capstone project focuses on building an AI-powered agent that analyzes financial market data, supports stock trend prediction, and generates investment-oriented insights through automated workflows.</p>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">AI Agents</span>
+              <span class="tag">Financial Analysis</span>
+              <span class="tag">Prediction</span>
+            </div>
+            <div class="featured-stats">
+              <div class="featured-stat">
+                <strong>Started</strong>
+                <span class="mini">Sep 2025</span>
+              </div>
+              <div class="featured-stat">
+                <strong>Focus</strong>
+                <span class="mini">AI + Finance</span>
+              </div>
+              <div class="featured-stat">
+                <strong>Repo</strong>
+                <span class="mini">Capstone-2</span>
+              </div>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Mag-201/Capstone-2" target="_blank">View GitHub Repo</a>
+              <a href="#projects">See All Projects</a>
+            </div>
+          </article>
+          <article class="featured-shot github-card">
+            <div class="featured-shot-box">
+              Add a screenshot later:<br>
+              save your image as <strong>ai-stock-agent.png</strong><br>
+              and replace this box with an &lt;img&gt; tag when ready.
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
     <section id="about">
       <div class="container">
         <div class="section-head">
@@ -516,7 +831,7 @@
         </div>
         <div class="project-grid">
           <article class="project-card">
-            <div class="project-preview">AI Stock Prediction Agent</div>
+            <div class="project-preview placeholder">AI Stock Prediction Agent</div>
             <div class="project-meta">
               <span>AI / Financial Analysis</span>
               <span>2025–Present</span>
@@ -534,7 +849,7 @@
             </div>
           </article>
           <article class="project-card">
-            <div class="project-preview">Anime Recommendation System</div>
+            <div class="project-preview placeholder">Anime Recommendation System</div>
             <div class="project-meta">
               <span>Recommendation / Big Data</span>
               <span>2024</span>
@@ -552,7 +867,7 @@
             </div>
           </article>
           <article class="project-card">
-            <div class="project-preview">Dashboard & Chatbot Integration</div>
+            <div class="project-preview placeholder">Dashboard & Chatbot Integration</div>
             <div class="project-meta">
               <span>Dashboard / Automation</span>
               <span>2024</span>
@@ -570,7 +885,7 @@
             </div>
           </article>
           <article class="project-card">
-            <div class="project-preview">Marketing & Business Research</div>
+            <div class="project-preview placeholder">Marketing & Business Research</div>
             <div class="project-meta">
               <span>Research / Strategy</span>
               <span>2024–2025</span>
@@ -611,9 +926,14 @@
             <p style="margin:0;">Tracked prospects across the sales funnel, supported market analysis, built influencer relationships, and created reports and target lists for management.</p>
           </div>
           <div class="timeline-item">
-            <div class="time">Expected Dec 2025</div>
+            <div class="time">Sep 2023 – Dec 2025</div>
             <h3 style="margin:0 0 8px;">M.S. in Analytics · Northeastern University</h3>
-            <p style="margin:0;">Coursework includes statistical modeling, probability theory, data management, big data, data visualization, and AI foundations.</p>
+            <p style="margin:0;">Master of Science in Analytics with coursework in statistical modeling, probability theory, data management, big data, data visualization, and AI foundations.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="time">Sep 2019 – Jun 2023</div>
+            <h3 style="margin:0 0 8px;">B.A. in International Trade & Economics · Guangzhou Vocational and Technical University of Science and Technology</h3>
+            <p style="margin:0;">Focused on international trade, macroeconomics, and e‑commerce, building foundational knowledge in global markets and business operations.</p>
           </div>
         </div>
       </div>
@@ -681,6 +1001,8 @@
       </div>
     </section>
 
+    
+
     <section id="contact">
       <div class="container">
         <div class="section-head">
@@ -706,6 +1028,7 @@
               <div class="quick-item">Upload your resume as <strong>resume.pdf</strong> so the download button works.</div>
               <div class="quick-item">To add your photo later, replace the MH avatar with an image tag using <strong>profile.jpg</strong>.</div>
               <div class="quick-item">You can swap each Case Study or GitHub placeholder with real project links anytime.</div>
+              <div class="quick-item">For project screenshots, upload files like <strong>ai-stock-agent.png</strong> and replace each placeholder box with an image.</div>
             </div>
           </article>
         </div>
@@ -721,6 +1044,10 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+function toggleTheme(){
+  document.body.classList.toggle('light');
+}
   </script>
 </body>
 </html>
